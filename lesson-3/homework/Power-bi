@@ -1,0 +1,156 @@
+1.What is the purpose of the "Applied Steps" pane in Power Query?
+  Track transformations – It provides a step-by-step record of every action you’ve done (e.g., removing columns, filtering rows, changing data types).
+
+Transparency – You can see how your data was cleaned or shaped, making the process reproducible.
+
+Edit or delete steps – Each step can be modified, renamed, reordered, or removed if you want to adjust the process.
+
+Debugging – If something goes wrong (e.g., a column disappears or data type errors occur), you can trace back which step caused the issue.
+
+Automation – Since Power Query records steps as M-code in the background, the same transformations will reapply automatically when new data is loaded.
+
+2.How do you remove duplicate rows in Power Query?
+  Open your table in Power Query Editor.
+
+Select the column(s) you want to check for duplicates.
+
+If you select one column → duplicates are checked only in that column.
+
+If you select multiple columns → duplicates are removed only if all selected column values are the same.
+
+Go to the Home tab → click Remove Rows → choose Remove Duplicates.
+3.What does the "Filter" icon do in Power Query?
+  Filter rows – lets you keep only the rows that meet certain conditions.
+
+For text: you can choose specific values (e.g., only "USA" or "Canada").
+
+For numbers/dates: you can set conditions (e.g., greater than 100, after 01/01/2024).
+
+Create a filter step – when you apply a filter, Power Query records it as a new step (Filtered Rows) in the Applied Steps pane.
+
+Dynamic filtering – the filter updates automatically whenever you refresh the data source.
+
+  4.How would you rename a column from "CustID" to "CustomerID"?
+
+   Using the interface (easy way)
+
+In Power Query Editor, right-click the column header CustID.
+
+Select Rename.
+
+Type CustomerID and press Enter.
+
+  5.What happens if you click "Close & Apply" in Power Query?
+
+  Close – Power Query Editor window closes.
+
+Apply – All the transformation steps you created (in the Applied Steps pane) are applied to the data.
+
+The transformed data is loaded into Power BI’s data model.
+
+The queries are refreshed, meaning Power BI pulls the latest data from the source and applies your steps.
+
+  6.Remove all rows where Quantity is less than 2.
+Using the interface:
+
+In Power Query Editor, click the filter icon on the Quantity column.
+
+Choose Number Filters → Greater Than or Equal To…
+
+Enter 2.
+
+Press OK.
+
+  7.Split the OrderDate column into separate "Year," "Month," and "Day" columns.
+  Using the interface (easy way):
+
+Select the OrderDate column.
+
+Go to the Add Column tab → Date group.
+
+Choose:
+
+Year → Year (creates a Year column).
+
+Month → Month (creates a Month column).
+
+Day → Day (creates a Day column).
+
+Rename the new columns if needed.
+
+8.Replace all "Mouse" entries in the Product column with "Computer Mouse."
+
+. Using the interface (easy way):
+
+Select the Product column.
+
+Go to the Transform tab → click Replace Values.
+
+In the dialog:
+
+Value To Find = Mouse
+
+Replace With = Computer Mouse
+
+Click OK.
+
+9.Sort the table by OrderDate (newest first).
+  Using the interface:
+
+In Power Query Editor, click the drop-down (▼) on the OrderDate column header.
+
+Choose Sort Descending.
+👉 This will place the most recent dates at the top.
+
+A step called Sorted Rows will appear in the Applied Steps pane.
+
+  10.Remove rows with null values
+
+Select the Price column.
+
+Go to Home → Remove Rows → Remove Blank Rows.
+👉 This deletes any rows where Price is null.
+  11.Write custom M-code to add a column calculating TotalSpent = Quantity * Price.
+
+In Power Query (M-code), you can add a custom column that multiplies Quantity × Price to calculate TotalSpent.
+
+  12.Home menyusida Group By tugmasini bosing.
+
+Group by sifatida CustID ustunini tanlang.
+
+Operation sifatida Sum ni tanlang.
+
+Qiymatini hisoblash uchun TotalSpent (yoki Quantity * Price natijasi) ustunini belgilang.
+
+Yangi ustun nomini yozing, masalan: CustomerTotalSpent.
+  13.Fix inconsistent date formats (e.g., 01/10/2023 vs. 2023-01-10) in OrderDate.
+  OrderDate ustunini tanlang.
+
+Transform → Data Type → Date ni tanlang.
+
+Power Query sanalarni avtomatik tarzda bir xil formatga (odatda yyyy-mm-dd) o‘tkazadi.
+
+Agar Power Query xatolik bersa, Using Locale usulini ishlating:
+
+Transform → Data Type → Date → Using Locale.
+
+Masalan: Date → English (United States) yoki kerakli til/mamlakatni tanlang.
+
+Bu bilan sanalar aniq format bo‘yicha o‘qiladi.
+
+  14.Create a conditional column: Label orders as "High Value" if Price > 100.
+
+  Add Column → Conditional Column tugmasini bosing.
+
+Ustun tanlang: Price.
+
+Shart qo‘ying: is greater than 100.
+
+Output: High Value.
+
+Else: null (yoki "Normal Value" deb yozishingiz mumkin).
+  15.Optimize the query to reduce refresh time (e.g., remove unused columns early).
+
+  ma’lumotni iloji boricha kichraytirib oling (ustun/qatorlarni erta olib tashlash), datatype’larni oxirda bering, merge/sort/group’larni ehtiyotkorlik bilan ishlating.
+  
+  
